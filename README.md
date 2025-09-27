@@ -8,6 +8,7 @@ The Predictive Grid Overload Forecaster The Delhi Transco Ltd. needs to anticipa
 ## File Structure
 
 ```
+```
 grid-forecast/
 │── backend/                # FastAPI backend
 │   ├── main.py             # Entry point
@@ -43,4 +44,3 @@ grid-forecast/
 │── .gitignore
 ```
 
-```
