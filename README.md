@@ -5,6 +5,7 @@ The Predictive Grid Overload Forecaster The Delhi Transco Ltd. needs to anticipa
 
 
 # File Structure should look exactly like this: 
+```
 grid-forecast/
 │── backend/                # FastAPI backend
 │   ├── main.py              # Entry point
@@ -43,3 +44,4 @@ grid-forecast/
 │   ├── API_REFERENCE.md
 
 │── .gitignore
+```
