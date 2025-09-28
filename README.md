@@ -7,35 +7,47 @@ The Predictive Grid Overload Forecaster – Delhi Transco Ltd. needs to anticipa
 
 ```text
 grid-forecast/
-│── backend/                # FastAPI backend
-│   ├── main.py             # Entry point
-│   ├── api/                # All API routes
-│   │   ├── holidays.py
-│   │   ├── weather.py
-│   │   ├── carbon.py
-│   ├── core/               # Core config & utilities
-│   │   ├── config.py       # Environment variables, API keys
-│   │   ├── cache.py        # Caching logic
-│   ├── tests/              # Unit & integration tests
-│   │   ├── test_holidays.py
-│   │   ├── test_weather.py
-│   │   ├── test_carbon.py
+│── backend/                
+│   ├── main.py             # Entry point (FastAPI app)
+│   ├── data/               # Kaggle datasets
+│   │   ├── electricity.csv
+│   │   ├── weather.csv
+│   │   ├── holidays.csv
+│   ├── core/
+│   │   ├── config.py       # Environment variables, file paths
+│   │   ├── cache.py        # Optional: caching preprocessed data
+│   ├── models/
+│   │   ├── train_model.py  # Training scripts
+│   │   ├── predict.py      # Prediction scripts
+│   ├── tests/
+│   │   ├── test_preprocessing.py
+│   │   ├── test_model.py
 │   ├── requirements.txt
 │   ├── Dockerfile
-│   └── .env.example        # Example env file (no secrets)
-│── frontend/               # Optional (if you add UI later)
-│   ├── public/             # Static assets (logos, images, CSS)
-│   ├── src/                # React / Next.js / Streamlit code
-│   │   ├── App.js / index.js
+│   └── .env.example
+│
+│── frontend/               
+│   ├── public/             # Static assets (logos, CSS, images)
+│   ├── src/                
+│   │   ├── App.js          # Main React / Next.js app
+│   │   ├── components/     # Components: charts, tables, forms
+│   │   ├── pages/          # For Next.js or routing
+│   │   ├── services/       # Fetch predictions from backend
+│   │   └── utils/          # Helper functions
 │   ├── package.json
-│── ai/                     # AI / LangChain experiments
-│   ├── notebooks/          # Jupyter/Colab notebooks for prototyping
-│   ├── pipelines/          # Scripts for chaining APIs / AI models
+│
+│── ai/                     
+│   ├── notebooks/          
+│   ├── pipelines/          
 │   │   ├── query_assistant.py
-│── assets/                 # Images, diagrams, ppt templates
+│
+│── assets/                 
 │   ├── workflow.png
 │   ├── ppt-template.pptx
-│── docs/                   # Docs for presentation + reference
+│
+│── docs/                   
 │   ├── README.md
 │   ├── API_REFERENCE.md
+│
 │── .gitignore
+
