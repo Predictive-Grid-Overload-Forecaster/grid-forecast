@@ -1,1 +1,45 @@
-.env 
+
+# General
+.DS_Store
+*.log
+*.sqlite3
+.env
+.venv/
+/venv/
+
+# Python/Backend
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+
+# Node/Frontend
+node_modules/
+/frontend/node_modules
+/frontend/build # React/Next.js build output
+/frontend/.next # Next.js specific folder
+/frontend/dist
+
+# Notebooks/AI
+# Checkpoint files
+.ipynb_checkpoints/
+# Jupyter Lab state
+.jupyter/
+# Output files
+*.csv.zip
+*.h5
+*.pkl
+/ai/models/ # To exclude large trained models
