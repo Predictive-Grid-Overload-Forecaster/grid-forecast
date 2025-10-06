@@ -1,33 +1,18 @@
 from fastapi import FastAPI
-from backend.api.holidays import router as holidays_router
-from backend.api.weather import router as weather_router
-from backend.api.carbon import router as carbon_router
-from backend.models.predict import predict
-from backend.models.model_utils import update_recent_demand
 from pydantic import BaseModel
 from typing import Optional
-from datetime import datetime  
+from datetime import datetime
+import logging
+from .predict import predict
+from .model_utils import update_recent_demand
 
-app = FastAPI(
-    title="Grid Forecast API",
-    description="API for electricity demand prediction and related data.",
-    version="0.1.0",
-)
+# Setup FastAPI
+app = FastAPI(title="Delhi Grid Forecaster - LightGBM")
 
-@app.get("/ping")
-def ping():
-    return {"status": "ok", "message": "Ping!"}
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
-@app.get("/")
-def root():
-    return {"message": "API is running"}
-
-# Include routers
-app.include_router(holidays_router, prefix="/api")
-app.include_router(weather_router, prefix="/api")
-app.include_router(carbon_router, prefix="/api")  # ✅ now works
-
-# Model prediction models (copied from models/app.py)
+# --- Pydantic models ---
 class Weather(BaseModel):
     temp_c: float
     dewpoint_c: Optional[float] = None
@@ -55,10 +40,16 @@ class PredictRequest(BaseModel):
     current_demand: Optional[float] = 0
     actual_demand: Optional[float] = None
 
-@app.post("/api/predict")
+# --- Prediction endpoint ---
+@app.post("/predict")
 def make_prediction(req: PredictRequest):
-    """Make electricity demand prediction using LightGBM model."""
     try:
+        logging.info(f"Received prediction request for timestamp: {req.timestamp}")
+        logging.info(f"Weather data: {req.weather.dict()}")
+        logging.info(f"Binary flags: {req.binary.dict()}")
+        logging.info(f"Categorical features: {req.categorical.dict()}")
+        logging.info(f"Current demand: {req.current_demand}")
+
         # Run prediction
         pred = predict(
             req.timestamp,
@@ -68,9 +59,12 @@ def make_prediction(req: PredictRequest):
             req.current_demand
         )
 
+        logging.info(f"Prediction result: {pred}")
+
         # Update recent demand buffer if provided
         if req.actual_demand is not None:
             update_recent_demand(req.timestamp, req.actual_demand)
+            logging.info(f"Updated recent demand with actual_demand={req.actual_demand}")
 
         return {
             "timestamp": req.timestamp.isoformat(),
@@ -78,4 +72,5 @@ def make_prediction(req: PredictRequest):
         }
 
     except Exception as e:
+        logging.exception("Prediction failed due to an error")
         return {"error": str(e)}

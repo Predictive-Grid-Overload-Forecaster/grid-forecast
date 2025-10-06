@@ -13,15 +13,20 @@ COUNTRY = os.getenv("COUNTRY")
 
 @router.get("/holidays/{year}")
 def get_holidays(year: int):
-
     if not CALENDARIFIC_API_KEY:
-        raise HTTPException(status_code=500, detail="API key not set in environment variables.")
+        raise HTTPException(
+            status_code=503, 
+            detail="Holidays API not configured. Please set CALENDARIFIC_API_KEY environment variable."
+        )
     
     if year < 1900 or year > 2100:
         raise HTTPException(status_code=400, detail="Invalid year. Please provide a year between 1900 and 2100.")
     
     if not COUNTRY:
-        raise HTTPException(status_code=500, detail="Country not set in environment variables.")
+        raise HTTPException(
+            status_code=503, 
+            detail="Holidays API not configured. Please set COUNTRY environment variable (e.g., 'IN' for India)."
+        )
     
     url = f"https://calendarific.com/api/v2/holidays?api_key={CALENDARIFIC_API_KEY}&country={COUNTRY}&year={year}"
     

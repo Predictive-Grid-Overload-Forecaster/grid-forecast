@@ -15,7 +15,10 @@ def get_weather(city: str):
     Fetch current + forecasted weather for a given city (using OpenWeather API).
     """
     if not WEATHER_API_KEY:
-        raise HTTPException(status_code=500, detail="Missing OpenWeather API key.")
+        raise HTTPException(
+            status_code=503, 
+            detail="Weather API not configured. Please set WEATHER_API_KEY environment variable."
+        )
 
     try:
     
