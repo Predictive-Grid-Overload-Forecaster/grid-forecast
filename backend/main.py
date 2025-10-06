@@ -4,7 +4,7 @@ from .api.weather import router as weather_router
 from .api.carbon import router as carbon_router  
 
 app = FastAPI(
-    title="Grid Forecast API",
+    title="Grid forecast API",
     description="API for electricity demand prediction and related data.",
     version="0.1.0",
 )
