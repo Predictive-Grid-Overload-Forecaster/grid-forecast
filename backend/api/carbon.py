@@ -5,8 +5,23 @@ import os
 router = APIRouter(prefix="/carbon", tags=["Carbon Data"])
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "electricity.csv")
-df = pd.read_csv(DATA_PATH)
-df['datetime'] = pd.to_datetime(df['datetime'])
+
+def get_data():
+    """Load data lazily to avoid memory issues at startup."""
+    df = pd.read_csv(DATA_PATH)
+    df['datetime'] = pd.to_datetime(df['datetime'])
+    
+    # Map column names to match expected feature names
+    df = df.rename(columns={
+        "Power demand": "demand_mw",
+        "temp": "temp_c", 
+        "dwpt": "dewpoint_c",
+        "rhum": "rel_humidity_pct",
+        "wdir": "wind_dir_deg",
+        "wspd": "wind_speed_ms",
+        "pres": "pressure_hpa"
+    })
+    return df
 
 EMISSION_FACTOR = 820
 RENEWABLE_PCT = 42.5
@@ -15,8 +30,9 @@ RENEWABLE_PCT = 42.5
 def get_carbon_data():
     """Return estimated carbon intensity and renewable % for Delhi based on power demand"""
     
+    df = get_data()  # Load data only when needed
     latest = df.sort_values('datetime', ascending=False).head(1)
-    demand_mw = latest['Power demand'].values[0]
+    demand_mw = latest['demand_mw'].values[0]
 
     carbon_intensity = round(demand_mw * EMISSION_FACTOR, 2)
     

@@ -1,2 +1,10 @@
 fastapi
 uvicorn[standard]
+pandas
+numpy
+scikit-learn
+lightgbm
+joblib
+pydantic
+python-dotenv
+requests
