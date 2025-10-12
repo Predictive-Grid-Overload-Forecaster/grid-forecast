@@ -1,0 +1,97 @@
+/* Chatbot Container */
+.chatbot-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: rgba(26, 26, 26, 0.65);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.08),
+                inset 0 0 12px rgba(0, 255, 255, 0.05);
+    color: #f5f7f8;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Title */
+.chatbot-title {
+    font-size: 1.6rem;
+    color: #00ffea;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+}
+
+/* Response */
+.chatbot-response {
+    min-height: 70px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(0, 255, 255, 0.06);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    color: #ccc;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+    overflow-y: auto;
+}
+
+/* Input group */
+.chatbot-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Input */
+.chatbot-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f5f7f8;
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.chatbot-input:focus {
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+/* Button Base */
+.chatbot-button {
+    padding: 0.8rem 1.6rem;
+    border-radius: 1rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Red (disabled) */
+.btn-red {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff4d4d;
+    cursor: not-allowed;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* White (enabled) */
+.btn-white {
+    background: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+}
+.btn-white:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+.btn-white:active {
+    transform: scale(0.9);
+}
