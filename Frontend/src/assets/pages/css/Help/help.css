@@ -1,0 +1,263 @@
+/* Main Container */
+.help-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #fff;
+}
+
+/* Header Section */
+.help-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.help-logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.help-logo {
+  width: 50px;
+  height: 50px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.help-title {
+  font-size: 2.5rem;
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.help-subtitle {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+/* Search Section */
+.help-search {
+  margin-bottom: 3rem;
+}
+
+.help-search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.help-search-input:focus {
+  outline: none;
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Quick Guide Section */
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #00ffff;
+}
+
+.quick-guide-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.guide-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.guide-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+}
+
+.guide-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.guide-title {
+  color: #00ffff;
+  margin-bottom: 0.8rem;
+}
+
+.guide-text {
+  color: #ccc;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.guide-btn {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.guide-btn:hover {
+  background: rgba(0, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* FAQ Section */
+.help-faq {
+  margin-bottom: 3rem;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  position: relative;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.faq-question {
+  color: #fff;
+  font-size: 1.1rem;
+  padding-right: 2.5rem;
+}
+
+.faq-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background: none;
+  border: none;
+  color: #00ffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.faq-toggle:hover {
+  transform: scale(1.2);
+}
+
+.answer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Contact Section */
+.help-contact {
+  text-align: center;
+  background: rgba(0, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.contact-title {
+  color: #00ffff;
+  margin-bottom: 0.8rem;
+}
+
+.contact-text {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.contact-btn {
+  background: #00ffff;
+  color: #000;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.6));
+  }
+
+  to {
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.8));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .help-container {
+    padding: 1rem;
+  }
+
+  .help-title {
+    font-size: 2rem;
+  }
+
+  .quick-guide-items {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .help-title {
+    font-size: 1.8rem;
+  }
+
+  .help-subtitle {
+    font-size: 1rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+  }
+}
